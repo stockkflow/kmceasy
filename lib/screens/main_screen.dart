@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'stats_screen.dart';
+import 'budget_screen.dart';
+import 'account_screen.dart';
+import 'add_transaction_screen.dart';
 import '../constants.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,9 +18,9 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const Center(child: Text('İstatistikler', style: kBodyStyle)), // Placeholder for Stats
-    const Center(child: Text('Bütçe', style: kBodyStyle)), // Placeholder for Budget
-    const Center(child: Text('Hesap', style: kBodyStyle)), // Placeholder for Account
+    const StatsScreen(),
+    const BudgetScreen(),
+    const AccountScreen(),
   ];
 
   @override
@@ -65,7 +69,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AddTransactionScreen()),
+          );
+        },
         backgroundColor: kPrimaryColorBegin,
         child: Icon(Icons.add, color: Colors.white),
       ),
